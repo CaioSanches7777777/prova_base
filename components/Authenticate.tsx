@@ -1,13 +1,13 @@
 'use server'
  
-import { signIn } from '@/auth'
+import  signIn  from '@/components/auth'
  
 export async function authenticate(_currentState: unknown, formData: FormData) {
   try {
     await signIn('credentials', formData)
   } catch (error) {
     if (error) {
-      switch (error.type) {
+      switch (error) {
         case 'CredentialsSignin':
           return 'Invalid credentials.'
         default:
